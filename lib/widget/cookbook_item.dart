@@ -18,106 +18,47 @@ class cookbook_item extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String image = imageURLCookbook;
-
-    return InkWell(
-      onTap: () {},
-      child: Row(
-        children: [
-          Stack(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.network(
-                  imageURLCookbook,
-                ),
-              ),
-              // Positioned(
-              // bottom: 5,
-              //child:
-              Container(
-                alignment: Alignment.bottomLeft,
-                decoration: BoxDecoration(
-                  color: Colors.black45,
-                  borderRadius:
-                      //BorderRadius.only(bottomLeft: Radius.circular(15)),
-                      BorderRadius.all(Radius.circular(15)),
-                ),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-
-                //color: Colors.black45,
-                child: Text(cookbookName,
-                    style: TextStyle(fontSize: 15, color: Colors.white)),
-              ),
-              //),
-            ],
+// this section will return one item of Grid Items that in bookmarked recipes page.
+    return Column(children: [
+      ClipOval(
+        child: Container(
+          width: 120,
+          height: 120,
+          decoration: BoxDecoration(
+            color: Colors.grey.shade300,
           ),
-        ],
+          // ignore: deprecated_member_use
+          child: FlatButton(
+            padding: EdgeInsets.all(10),
+            onPressed: () {
+              debugPrint('bottun clicked');
+            },
+            child: ClipOval(
+              child: Image.network(
+                image,
+                fit: BoxFit.cover,
+                // cimageURL, fit: BoxFit.cover,
+                // Size of the image
+                width: 120,
+                height: 120,
+              ),
+            ),
+          ),
+        ),
       ),
-    );
-// build ClipRRect
-    // return InkWell(
-    //     onTap: () {},
-    //     child: Card(
-    //         shape:
-    //             RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-    //         elevation: 10,
-    //         margin: EdgeInsets.all(10),
-    //         child: Column(children: [
-    //           Stack(
-    //             children: [
-    //               ClipRRect(
-    //                 borderRadius: BorderRadius.only(
-    //                     topLeft: Radius.circular(15),
-    //                     topRight: Radius.circular(15)),
-    //                 child: Image.network(
-    //                   image,
-    //                   height: 200,
-    //                   width: double.infinity,
-    //                   fit: BoxFit.cover,
-    //                 ),
-    //               ),
-    //               Positioned(
-    //                 bottom: 10,
-    //                 child: Container(
-    //                     color: Colors.black54,
-    //                     child: Text(
-    //                       cookbookName,
-    //                       style: TextStyle(fontSize: 10, color: Colors.white),
-    //                     )),
-    //               )
-    //             ],
-    //           ),
-    //         ])));
-
-// build ink picture
-    // return ClipOval(
-    //   child: Material(
-    //     color: Colors.grey.shade400,
-    //     child: Ink.image(
-    //       image: image,
-    //       fit: BoxFit.cover,
-    //       width: 100,
-    //       height: 100,
-    //       child: InkWell(onTap: onClicked),
-    //     ),
-    //   ),
-    // );
-
-    // return InkWell(
-    //   onTap: () {},
-    //   child: Container(
-    //     child: Container(
-    //       child: Text(cookbookName,
-    //           style: TextStyle(fontSize: 15, color: Colors.white)),
-    //     ),
-    //     height: 30.0,
-    //     width: MediaQuery.of(context).size.width - 100.0,
-    //     decoration: BoxDecoration(
-    //         borderRadius: BorderRadius.circular(5),
-    //         color: Colors.black54,
-    //         image: DecorationImage(
-    //             image: new AssetImage(imageURLCookbook), fit: BoxFit.fill)),
-    //   ),
-    // );
+      Container(
+          width: double.infinity,
+          margin: EdgeInsets.only(
+            top: 10,
+            left: 10,
+            right: 10,
+          ),
+          child: Center(
+            child: Text(
+              cookbookName,
+              style: TextStyle(fontSize: 14),
+            ),
+          )),
+    ]);
   }
 }

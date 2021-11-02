@@ -6,7 +6,7 @@ const Cookbook_Data = const [
     id: 'c1',
     cookbookName: 'Default cookbook',
     imageURLCookbook:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg/800px-Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg',
+        'https://lacuisinedegeraldine.fr/wp-content/uploads/2021/06/Pancakes-04483-2-scaled.jpg',
   ),
 ];
 
@@ -16,7 +16,7 @@ const Recipes_Data = const [
     recipeName: 'Pancakes',
     category: 'c1',
     imageURL:
-        'https://cdn.pixabay.com/photo/2018/07/10/21/23/pancake-3529653_1280.jpg',
+        'https://lacuisinedegeraldine.fr/wp-content/uploads/2021/06/Pancakes-04483-2-scaled.jpg',
     ingredients: [
       '4 Tomatoes',
       '1 Tablespoon of Olive Oil',
@@ -34,7 +34,7 @@ const Recipes_Data = const [
     recipeName: 'Orange Mousse',
     category: 'c1',
     imageURL:
-        'https://cdn.pixabay.com/photo/2017/05/01/05/18/pastry-2274750_1280.jpg',
+        'https://amandascookin.com/wp-content/uploads/2021/03/Whipped-Jello-Mandarin-Orange-Mousse-FB.jpg',
     ingredients: [
       '4 Tomatoes',
       '1 Tablespoon of Olive Oil',

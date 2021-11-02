@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.instayum1">
    <application
-        android:label="instayum1"
+        android:label="InstaYum"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

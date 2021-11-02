@@ -126,20 +126,10 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  // Widget buildName(cooking_Enthusiast user) => Container(
-  //       margin: EdgeInsets.all(10),
-  //       child: Column(
-  //         children: [
-  //           Text(
-  //             user.name,
-  //             style: TextStyle(fontSize: 17, fontFamily: 'Open Sans'),
-  //           ),
-  //         ],
-  //       ),
-  //     );
-
   Widget buildImage() {
-    final image = NetworkImage(imageURL);
+    final image = imageURL == "noImage"
+        ? AssetImage("assets/images/defaultUser.png") // NEW
+        : NetworkImage(imageURL);
 
     return ClipOval(
       child: Material(
@@ -149,9 +139,6 @@ class _ProfilePageState extends State<ProfilePage> {
           fit: BoxFit.cover,
           width: 100,
           height: 100,
-
-          // child:
-          //     InkWell(onTap: widget.onClicked), // i suggest to delete the edit.
         ),
       ),
     );

@@ -20,6 +20,7 @@ class AuthForm extends StatefulWidget {
     String password,
     File image,
     bool isSignUp,
+    bool isDefaultImage, // NEW
     BuildContext ctx,
   ) submitFn;
   final bool isLoeading;
@@ -30,8 +31,11 @@ class AuthForm extends StatefulWidget {
 
 class _AuthFormState extends State<AuthForm> {
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController _pass = TextEditingController();
+  final TextEditingController _confirmPass = TextEditingController();
 
   bool _isSignUp = true;
+  bool _isDefaultImage = false; // NEW
 
   var _userEmail = "";
   var _userName = "";
@@ -65,13 +69,7 @@ class _AuthFormState extends State<AuthForm> {
       FocusScope.of(context).unfocus();
 
       if (_userImageFile == null && _isSignUp) {
-        Scaffold.of(context).showSnackBar(
-          SnackBar(
-            content: Text("Please pick an image"),
-            backgroundColor: Theme.of(context).errorColor,
-          ),
-        );
-        return;
+        _isDefaultImage = true;
       }
       if (isValid) {
         _formKey.currentState?.save();
@@ -81,6 +79,8 @@ class _AuthFormState extends State<AuthForm> {
           _userPassword.trim(),
           _userImageFile,
           _isSignUp,
+          _isDefaultImage,
+
           context,
         );
       }
@@ -171,7 +171,8 @@ class _AuthFormState extends State<AuthForm> {
                         decoration: InputDecoration(labelText: "Username"),
                       ),
                     TextFormField(
-                      key: ValueKey("password"),
+                      //key: ValueKey("password"),
+                      controller: _pass,
                       validator: (value) {
                         if (value.isEmpty) {
                           return "password should not be empty";
@@ -186,6 +187,28 @@ class _AuthFormState extends State<AuthForm> {
                       decoration: InputDecoration(labelText: "Password"),
                       obscureText: true, // to hide the password
                     ),
+                    if (_isSignUp)
+                      //confirm password only in sign up case
+                      TextFormField(
+                        key: ValueKey("password"),
+                        controller: _confirmPass,
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return "password should not be empty";
+                          } else if (!isValiedPassword(value)) {
+                            return "The password must conatint at least \none upper case \none lower case \none digit \none special character \nand at least 8 characters in length";
+                          } else if (value != _pass.text) {
+                            return "The passwords do not match, try again";
+                          }
+                          return null;
+                        },
+                        onSaved: (value) {
+                          _userPassword = value;
+                        },
+                        decoration:
+                            InputDecoration(labelText: "Confirm password"),
+                        obscureText: true, // to hide the password
+                      ),
                     SizedBox(
                       height: 12,
                     ),

@@ -5,9 +5,9 @@ class FollowersNumbers extends StatelessWidget {
   Widget build(BuildContext context) => Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
-          buildButton(context, '25', 'Following'),
+          buildButton(context, '0', 'Following'),
           buildDivider(),
-          buildButton(context, '100', 'Followers'),
+          buildButton(context, '0', 'Followers'),
         ],
       );
   Widget buildDivider() => Container(
